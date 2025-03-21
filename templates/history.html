@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="fas fa-history me-2"></i>Analysis History</h3>
+            </div>
+            <div class="card-body">
+                {% if analyses %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Filename</th>
+                                <th>Date</th>
+                                <th>Warp Count</th>
+                                <th>Weft Count</th>
+                                <th>Density</th>
+                                <th>Confidence</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for analysis in analyses %}
+                            <tr>
+                                <td>{{ analysis.id }}</td>
+                                <td class="text-center">
+                                    <img src="{{ url_for('uploaded_file', filename=analysis.filename) }}" alt="Thumbnail" 
+                                         class="img-thumbnail" style="max-width: 60px;">
+                                </td>
+                                <td class="text-truncate" style="max-width: 150px;" title="{{ analysis.original_filename }}">
+                                    {{ analysis.original_filename }}
+                                </td>
+                                <td>{{ analysis.date_created.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>{{ analysis.warp_count }}</td>
+                                <td>{{ analysis.weft_count }}</td>
+                                <td>{{ "%.1f"|format(analysis.thread_density) }} per {{ analysis.measurement_unit }}</td>
+                                <td>
+                                    {% set confidence_pct = (analysis.confidence_score * 100)|int %}
+                                    
+                                    {% if confidence_pct >= 80 %}
+                                        <span class="badge bg-success">{{ confidence_pct }}%</span>
+                                    {% elif confidence_pct >= 60 %}
+                                        <span class="badge bg-info">{{ confidence_pct }}%</span>
+                                    {% elif confidence_pct >= 40 %}
+                                        <span class="badge bg-warning">{{ confidence_pct }}%</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">{{ confidence_pct }}%</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="{{ url_for('view_result', analysis_id=analysis.id) }}" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-eye"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    No analyses found. <a href="{{ url_for('index') }}">Upload a fabric image</a> to get started.
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

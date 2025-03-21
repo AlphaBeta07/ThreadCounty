@@ -1,0 +1,34 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="90" fill="#212529" stroke="#6c757d" stroke-width="4"/>
+  
+  <!-- Thread grid pattern representing fabric -->
+  <g stroke-width="2" stroke-linecap="round">
+    <!-- Vertical threads (warp) -->
+    <line x1="60" y1="40" x2="60" y2="160" stroke="#28a745"/>
+    <line x1="75" y1="40" x2="75" y2="160" stroke="#28a745"/>
+    <line x1="90" y1="40" x2="90" y2="160" stroke="#28a745"/>
+    <line x1="105" y1="40" x2="105" y2="160" stroke="#28a745"/>
+    <line x1="120" y1="40" x2="120" y2="160" stroke="#28a745"/>
+    <line x1="135" y1="40" x2="135" y2="160" stroke="#28a745"/>
+    
+    <!-- Horizontal threads (weft) -->
+    <line x1="40" y1="60" x2="160" y2="60" stroke="#17a2b8"/>
+    <line x1="40" y1="75" x2="160" y2="75" stroke="#17a2b8"/>
+    <line x1="40" y1="90" x2="160" y2="90" stroke="#17a2b8"/>
+    <line x1="40" y1="105" x2="160" y2="105" stroke="#17a2b8"/>
+    <line x1="40" y1="120" x2="160" y2="120" stroke="#17a2b8"/>
+    <line x1="40" y1="135" x2="160" y2="135" stroke="#17a2b8"/>
+  </g>
+  
+  <!-- Magnifying glass -->
+  <circle cx="70" cy="130" r="25" fill="none" stroke="#ffc107" stroke-width="5"/>
+  <line x1="88" y1="148" x2="110" y2="170" stroke="#ffc107" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Counter display -->
+  <rect x="105" y="50" width="50" height="30" rx="5" fill="#dc3545"/>
+  <text x="130" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ffffff">12×12</text>
+  
+  <!-- App name -->
+  <text x="100" y="185" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff">ThreadCounty</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="400" height="300" fill="#212529" rx="10" ry="10"/>
+  
+  <!-- Original fabric image representation -->
+  <rect x="20" y="20" width="160" height="140" fill="#343a40" stroke="#6c757d" stroke-width="2" rx="5" ry="5"/>
+  <text x="100" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ffffff">Original Fabric</text>
+  
+  <!-- Thread detection visualization -->
+  <rect x="220" y="20" width="160" height="140" fill="#343a40" stroke="#6c757d" stroke-width="2" rx="5" ry="5"/>
+  
+  <!-- Visualization grid patterns -->
+  <g stroke-width="1.5" stroke-dasharray="2,2">
+    <!-- Vertical threads (warp) in visualization -->
+    <line x1="230" y1="30" x2="230" y2="150" stroke="#28a745"/>
+    <line x1="250" y1="30" x2="250" y2="150" stroke="#28a745"/>
+    <line x1="270" y1="30" x2="270" y2="150" stroke="#28a745"/>
+    <line x1="290" y1="30" x2="290" y2="150" stroke="#28a745"/>
+    <line x1="310" y1="30" x2="310" y2="150" stroke="#28a745"/>
+    <line x1="330" y1="30" x2="330" y2="150" stroke="#28a745"/>
+    <line x1="350" y1="30" x2="350" y2="150" stroke="#28a745"/>
+    <line x1="370" y1="30" x2="370" y2="150" stroke="#28a745"/>
+    
+    <!-- Horizontal threads (weft) in visualization -->
+    <line x1="220" y1="40" x2="380" y2="40" stroke="#17a2b8"/>
+    <line x1="220" y1="60" x2="380" y2="60" stroke="#17a2b8"/>
+    <line x1="220" y1="80" x2="380" y2="80" stroke="#17a2b8"/>
+    <line x1="220" y1="100" x2="380" y2="100" stroke="#17a2b8"/>
+    <line x1="220" y1="120" x2="380" y2="120" stroke="#17a2b8"/>
+    <line x1="220" y1="140" x2="380" y2="140" stroke="#17a2b8"/>
+  </g>
+  <text x="300" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ffffff">Thread Detection</text>
+  
+  <!-- Results section -->
+  <rect x="20" y="180" width="360" height="100" fill="#343a40" stroke="#6c757d" stroke-width="2" rx="5" ry="5"/>
+  
+  <!-- Warp count box -->
+  <rect x="40" y="200" width="90" height="60" fill="#28a745" rx="5" ry="5"/>
+  <text x="85" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ffffff">Warp Threads</text>
+  <text x="85" y="245" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff">15</text>
+  
+  <!-- Weft count box -->
+  <rect x="155" y="200" width="90" height="60" fill="#17a2b8" rx="5" ry="5"/>
+  <text x="200" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ffffff">Weft Threads</text>
+  <text x="200" y="245" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff">18</text>
+  
+  <!-- Total density box -->
+  <rect x="270" y="200" width="90" height="60" fill="#ffc107" rx="5" ry="5"/>
+  <text x="315" y="225" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#343a40">Thread Density</text>
+  <text x="315" y="245" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#343a40">33.0</text>
+  
+  <!-- Title -->
+  <text x="200" y="15" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Fabric Analysis Results</text>
+</svg>

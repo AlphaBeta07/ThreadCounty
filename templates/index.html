@@ -1,0 +1,158 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="fas fa-microscope me-2"></i>Fabric Thread Counter</h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img src="{{ url_for('static', filename='assets/logo.svg') }}" alt="ThreadCounty Logo" class="img-fluid" style="max-width: 200px;">
+                    <h4 class="mt-3">Upload a fabric image for thread analysis</h4>
+                    <p class="text-muted">Our AI-powered tool will count warp and weft threads automatically</p>
+                </div>
+                
+                <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    <input type="hidden" name="source" value="web">
+                    
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Choose Image</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".png,.jpg,.jpeg,.tif,.tiff,.bmp" required>
+                        <div class="invalid-feedback">
+                            Please select an image file.
+                        </div>
+                        <div class="form-text">
+                            Supported formats: PNG, JPG, JPEG, TIF, TIFF, BMP
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="unit" class="form-label">Measurement Unit</label>
+                            <select class="form-select" id="unit" name="unit">
+                                <option value="inch">Inches (in)</option>
+                                <option value="cm">Centimeters (cm)</option>    
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="reference_length" class="form-label">Reference Length</label>
+                            <input type="number" class="form-control" id="reference_length" name="reference_length" 
+                                   value="1.0" min="0.1" max="10" step="0.1" required>
+                            <div class="form-text">
+                                The reference length in the selected unit.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes (Optional)</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="2" placeholder="Add any notes about this sample..."></textarea>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fas fa-upload me-2"></i>Upload and Analyze
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-header bg-secondary text-white">
+                <h4 class="mb-0"><i class="fas fa-info-circle me-2"></i>How It Works</h4>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-4 text-center">
+                        <div class="bg-dark p-3 rounded">
+                            <i class="fas fa-camera fa-3x text-primary mb-2"></i>
+                            <h5>Step 1</h5>
+                            <p>Capture or upload a clear image of fabric</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="bg-dark p-3 rounded">
+                            <i class="fas fa-cogs fa-3x text-primary mb-2"></i>
+                            <h5>Step 2</h5>
+                            <p>Our AI analyzes thread patterns</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="bg-dark p-3 rounded">
+                            <i class="fas fa-chart-bar fa-3x text-primary mb-2"></i>
+                            <h5>Step 3</h5>
+                            <p>View detailed thread count results</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <h5><i class="fas fa-lightbulb me-2"></i>Tips for best results:</h5>
+                    <ul>
+                        <li>Use good lighting without shadows on the fabric</li>
+                        <li>Keep the camera focused and steady</li>
+                        <li>Avoid wrinkles or folds in the fabric</li>
+                        <li>Include a scale reference in the image if possible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Form validation
+    (function() {
+        'use strict';
+        
+        // Fetch all forms we want to apply custom validation to
+        const forms = document.querySelectorAll('.needs-validation');
+        
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                
+                form.classList.add('was-validated');
+            }, false);
+        });
+    })();
+    
+    // Preview uploaded image
+    document.getElementById('file').addEventListener('change', function(e) {
+        const fileInput = e.target;
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                // Create preview if it doesn't exist
+                let preview = document.getElementById('image-preview');
+                if (!preview) {
+                    const formGroup = fileInput.parentElement;
+                    preview = document.createElement('div');
+                    preview.id = 'image-preview';
+                    preview.className = 'mt-3 text-center';
+                    preview.innerHTML = `
+                        <p class="mb-2">Image Preview:</p>
+                        <img src="${e.target.result}" class="img-fluid img-thumbnail" style="max-height: 200px;">
+                    `;
+                    formGroup.appendChild(preview);
+                } else {
+                    // Update existing preview
+                    preview.querySelector('img').src = e.target.result;
+                }
+            };
+            
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    });
+</script>
+{% endblock %}

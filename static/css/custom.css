@@ -1,0 +1,91 @@
+/* Custom styles for ThreadCounty app */
+
+/* Enhance card hover effects */
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Improve image thumbnails */
+.img-thumbnail {
+  border-radius: 8px;
+  border: 2px solid var(--bs-secondary);
+}
+
+/* Add a divider with icon */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--bs-secondary);
+}
+
+.divider::before {
+  margin-right: .5em;
+}
+
+.divider::after {
+  margin-left: .5em;
+}
+
+/* Add subtle texture to background */
+body {
+  background-color: var(--bs-dark);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom styling for the progress bars */
+.progress {
+  background-color: var(--bs-dark);
+  border: 1px solid var(--bs-gray-700);
+}
+
+/* Spinning animation for loading indicators */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Custom badge style for thread counts */
+.badge-thread {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+/* File upload button styling */
+input[type="file"] {
+  cursor: pointer;
+}
+
+/* Mobile responsiveness enhancement */
+@media (max-width: 768px) {
+  .card-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .card-header h4 {
+    font-size: 1.2rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+}
