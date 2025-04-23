@@ -30,5 +30,5 @@
   <text x="130" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ffffff">12×12</text>
   
   <!-- App name -->
-  <text x="100" y="185" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff">ThreadCounty</text>
+  <text x="100" y="185" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff" stroke="black">ThreadCounty</text>
 </svg>
